@@ -23,9 +23,9 @@ class Cart extends React.Component {
         return (
             <div>
                 <WingBlank>
-                    <Auth />
+                    {/*<Auth />*/}
                     <Button size="small" inline onClick={()=>{this.props.decCart("减1")}}>-</Button>
-                    <span>{this.props.num}</span>
+                    <span>{this.props.cart.num}</span>
                     <Button size="small" inline onClick={()=>{this.props.addCart("加1")}}>+</Button>
                 </WingBlank>
             </div>

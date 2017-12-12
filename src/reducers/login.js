@@ -5,15 +5,16 @@
 
 
 let initialState = {
-    isAuth : false
+    isAuth: false
 }
 
-export function isAuth(state = initialState,action) {
-    switch (action.type){
+export function isAuth(state = initialState, action) {
+    console.log("login reducer",action)
+    switch (action.type) {
         case "LOGIN_SUCCESS":
-            return {...state,isAuth:true}
+            return {...state, isAuth: true}
         case "LOGIN_FAIL":
-            return {...state,isAuth:false}
+            return {...state, isAuth: false}
         default:
             return state
     }

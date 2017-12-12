@@ -9,19 +9,22 @@ import {
     Link
 } from "react-router-dom";
 import { Provider } from 'react-redux';
-import { createStore } from "redux";
+import { combineReducers,createStore } from "redux";
 
 import Welcome from "./component/Welcome";
 import Login from "./container/Login";
 import Cart from "./container/Cart"
 
 import { cart } from "./reducers/cart";
+import { isAuth } from "./reducers/login";
 
-let store = createStore(cart);
+let rootReducers = combineReducers({cart,isAuth})
+let store = createStore(rootReducers);
 
 
 class App extends React.Component {
     render() {
+        // console.log(store.getState())
         return(
             <Router>
                 <div>
@@ -34,6 +37,7 @@ class App extends React.Component {
     }
 }
 
+store.subscribe(()=>{console.log("get store",store.getState())})
 
 ReactDOM.render(
     <Provider store={store}>

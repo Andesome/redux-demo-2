@@ -15,7 +15,7 @@ import { loginSuccess,loginFail } from "../actions/login";
 )
 class Auth extends React.Component{
     render(){
-        console.log("auth",this.props)
+        console.log("验证页面别渲染了",this.props)
         return !this.props.isAuth ? <Redirect to="/" /> : null
     }
 }

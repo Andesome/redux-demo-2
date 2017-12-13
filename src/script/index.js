@@ -11,6 +11,7 @@ import {createStore,  applyMiddleware } from "redux";
 import {couter, ADD_COUNTER, CUT_COUNTER, DELAY_ADD } from "./counter.redux";
 
 
+
 let store = createStore(
     couter,
     applyMiddleware(thunk)

@@ -9,7 +9,6 @@ let initialState = {
 }
 
 export function isAuth(state = initialState, action) {
-    console.log("login reducer",action)
     switch (action.type) {
         case "LOGIN_SUCCESS":
             return {...state, isAuth: true}

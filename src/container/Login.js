@@ -56,7 +56,7 @@ class Login extends React.Component {
             //用户存在
             if(user.username === name){
                 if(user.userpw === password){
-                    console.log("登录成功",this.props)
+                    // console.log("登录成功",this.props)
                     Toast.info("登录成功，即将跳转...",2,function () {
                         this.props.history.push("/cart");
                     }.bind(this))

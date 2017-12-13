@@ -8,36 +8,45 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import { Provider } from 'react-redux';
-import { combineReducers,createStore } from "redux";
+import {Provider} from 'react-redux';
+import {combineReducers, createStore} from "redux";
 
 import Welcome from "./component/Welcome";
 import Login from "./container/Login";
 import Cart from "./container/Cart"
 
-import { cart } from "./reducers/cart";
-import { isAuth } from "./reducers/login";
+import {cart} from "./reducers/cart";
+import {isAuth} from "./reducers/login";
+import thunk from "redux-thunk";
+import {createLogger} from "redux-logger";
+import {applyMiddleware} from "redux";
 
-let rootReducers = combineReducers({cart,isAuth})
-let store = createStore(rootReducers);
+const middleware = [thunk];
+if (process.env.NODE_ENV !== 'production') {
+    middleware.push(createLogger());
+}
+let rootReducers = combineReducers({cart, isAuth})
+let store = createStore(
+    rootReducers,
+    applyMiddleware(...middleware)
+);
 
 
 class App extends React.Component {
     render() {
-        // console.log(store.getState())
-        return(
+        console.log("APP ", this.props);
+        return (
             <Router>
                 <div>
-                    <Route exact path="/" component={Welcome} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/cart" component={Cart} />
+                    <Route exact path="/" component={Welcome}/>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/cart" component={Cart}/>
                 </div>
             </Router>
         )
     }
 }
 
-store.subscribe(()=>{console.log("get store",store.getState())})
 
 ReactDOM.render(
     <Provider store={store}>

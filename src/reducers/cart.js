@@ -6,12 +6,10 @@
 let initialState = {
     num: 0,
     status: "default",
-    isAuth : false
 }
 
 //reducer
 export function cart(state = initialState, action) {
-    console.log("cart reducer",action)
     switch (action.type) {
         case 'ADD_CART':
             return Object.assign({}, state, {num: state.num + 1, status: action.status});
